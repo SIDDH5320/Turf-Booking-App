@@ -1,0 +1,12 @@
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Select a slot</mat-label>
+    <mat-select formControlName="slot">
+      <mat-option *ngFor="let slot of availableSlots" [value]="slot">
+        {{ slot }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="slot?.invalid">You must select a slot.</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Book Turf</button>
+</form>

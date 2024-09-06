@@ -1,0 +1,12 @@
+/* Ensure the cards have equal spacing between them */
+.card {
+  margin-bottom: 20px; /* Space between rows of cards */
+  min-width:fit-content;
+  margin: 0 10px;
+}
+
+
+.row {
+  padding-left: 10px;
+  padding-right: 10px;
+}

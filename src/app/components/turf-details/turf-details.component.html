@@ -1,0 +1,21 @@
+<mat-card *ngIf="turf">
+  <img mat-card-image [src]="turf.imageUrl" alt="{{ turf.name }}">
+  <mat-card-content>
+    <h2>{{ turf.name }}</h2>
+    <p>Location: {{ turf.location }}</p>
+    <p>Price per hour: {{ turf.pricePerHour | currency }}</p>
+    <form (ngSubmit)="bookTurf()">
+      <mat-form-field appearance="fill">
+        <mat-label>Select a slot</mat-label>
+        <mat-select formControlName="slotControl">
+          <mat-option *ngFor="let slot of turf.availableSlots" [value]="slot">
+            {{ slot }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="slotControl.invalid">Please select a valid slot.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Book Now</button>
+      <p *ngIf="bookingSuccess">Booking successful!</p>
+    </form>
+  </mat-card-content>
+</mat-card>

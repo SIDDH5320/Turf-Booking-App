@@ -1,0 +1,43 @@
+<!-- <div *ngFor="let turf of turfs" class="turf-card ">
+  <mat-card>
+    <img mat-card-image [src]="turf.imageUrl" alt="{{ turf.name }}">
+    <mat-card-content>
+      <h2>{{ turf.name }}</h2>
+      <p>{{ turf.location }}</p>
+      <p>Price per hour: {{ turf.pricePerHour | currency }}</p>
+      <button mat-raised-button color="primary" (click)="bookTurf(turf.id)">Book Now</button>
+    </mat-card-content>
+  </mat-card>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-4 pt-2" *ngFor="let turf of turfs">
+      <div class="card" (click)="onselectTurf(turf)">
+        <div class="card-header" [ngClass]="turf.name == selectedTurf?.name ? 'bg-danger' : ''">
+          <img mat-card-image [src]="turf.imageUrl" alt="{{ turf.name }}" />
+        </div>
+        <div class="card-body">
+          <h2>{{ turf.name }}</h2>
+          <p>{{ turf.location }}</p>
+        </div>
+        <div class="card-footer">
+          <p>Price per hour: {{ turf.pricePerHour | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <h5>Available turfs</h5>
+  <div class="row">
+    <div class="col-3" *ngFor="let availableSlots of selectedTurf?.availableSlots">
+      <button
+        class="btn"
+        [ngClass]="selectedSlots == availableSlots ? 'btn-danger' : 'btn-secondary'"
+        (click)="selectSlot(availableSlots)"
+      >
+        {{ availableSlots }}
+      </button>
+    </div>
+  </div>
+</div>
+
